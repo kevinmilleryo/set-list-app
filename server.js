@@ -87,6 +87,6 @@ app.delete('/deleteSong', (request, response) => {
 
 })
 
-app.listen(process.env.PORT || PORT, ()=>{
+app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
