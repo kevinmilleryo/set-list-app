@@ -60,22 +60,22 @@ app.put('/addOneLike', (request, response) => {
 
 })
 
-// app.put('/addOneDislike', (request, response) => {
-//     db.collection('songs').updateOne({bandName: request.body.bandNameS, songName: request.body.songNameS,likes: request.body.likesS},{
-//         $set: {
-//             likes:request.body.likesS - 1
-//           }
-//     },{
-//         sort: {_id: -1},
-//         upsert: true
-//     })
-//     .then(result => {
-//         console.log('Added One Dislike')
-//         response.json('Dislike Added')
-//     })
-//     .catch(error => console.error(error))
+app.put('/addOneDislike', (request, response) => {
+    db.collection('songs').updateOne({bandName: request.body.bandNameS, songName: request.body.songNameS,likes: request.body.likesS},{
+        $set: {
+            likes:request.body.likesS - 1
+          }
+    },{
+        sort: {_id: -1},
+        upsert: true
+    })
+    .then(result => {
+        console.log('Added One Dislike')
+        response.json('Dislike Added')
+    })
+    .catch(error => console.error(error))
 
-// })
+})
 
 app.delete('/deleteSong', (request, response) => {
     db.collection('songs').deleteOne({bandName: request.body.bandNameS})
