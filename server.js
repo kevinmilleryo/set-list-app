@@ -5,6 +5,8 @@ const cors = require ('cors')
 const PORT = process.env.PORT || 2121
 require('dotenv').config()
 
+const uri = process.env.MONGO_CONNECTION_STRING;
+const client = new MongoClient(uri);
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
