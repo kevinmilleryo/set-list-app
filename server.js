@@ -79,6 +79,8 @@ app.put('/addOneDislike', (request, response) => {
 
 })
 
+
+
 app.delete('/deleteSong', (request, response) => {
     db.collection('songs').deleteOne({bandName: request.body.bandNameS})
     .then(result => {
@@ -88,6 +90,15 @@ app.delete('/deleteSong', (request, response) => {
     .catch(error => console.error(error))
 
 })
+
+client.connect(err => {
+    if(err){ console.error(err); return false;}
+    // connection to mongo is successful, listen for requests
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+});
+
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
